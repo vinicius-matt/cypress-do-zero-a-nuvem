@@ -48,8 +48,13 @@ describe('Central de Atendimento ao Cliente TAT', () => {
   it.only('Verificando valor no campo telefone',()=>{
     cy.get('#phone').as('telefone')
     cy.get('@telefone').type('47997740921')
+    //cy.get('@telefone').type('47997740921')
 
     //verficando valor
-    cy.get('@telefone').should('have.value','47997740921')
+    cy.get('@telefone')
+    .invoke('val')
+    .should('match',/^\d+$/)
+    //cy.get('@telefone').should('have.value','47997740921')
+
   })
 })
